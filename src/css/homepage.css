@@ -1,0 +1,131 @@
+.container {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0px;
+    padding: 0px;
+    left: 0px;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: url('/images-ux/background_video.mp4');
+}
+
+.logo-image-wide {
+    width: 27vh;
+    height: 27vh;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-image: url('/images-ux/login_logo_wide.png');
+}
+
+.flagContainer {
+    position: fixed;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    left: 0;
+    top: 61vh;
+    z-index: 10;
+}
+
+.flag {
+    width: 5vh;
+    height: 5vh;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    border-radius: 30px;
+}
+
+.it {
+    background-image: url('/images-ux/italian_flag_sphere.png');
+}
+
+.en {
+    background-image: url('/images-ux/english_flag_sphere.png');
+}
+
+.es {
+    background-image: url('/images-ux/spanish_flag_sphere.png');
+}
+
+.ro {
+    background-image: url('/images-ux/romanian_flag_sphere.png');
+}
+
+.footer-login {
+    background-image: url('/images-ux/footer-login.png');   
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    top: 60vh;
+    width: 100%;
+    height: 70vh;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    visibility: hidden;
+}
+
+.btnStyle {
+    z-index: 2;
+}
+
+.header, .footer {
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+}
+
+.background-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+/* Text Decorations */
+.motStyle{
+    color: #4942ce;
+    font-size: 3vh;
+    text-align: center;
+}
+
+.langStyle{
+    color: black;
+    font-weight: 800;
+}
+
+/* Fonts */
+.poppins-bold {
+    font-family: "Poppins", serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+
+/* Empty Span */
+.sp12vh{
+    height: 12vh;
+}
+.sp6vh{
+    height: 6vh;
+}
+
+.sp4vh{
+    height: 4vh;
+}
