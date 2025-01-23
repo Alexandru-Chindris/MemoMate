@@ -1,4 +1,4 @@
-name: Deploy to Portfolio
+name: MemoMate
 
 on:
   push:
