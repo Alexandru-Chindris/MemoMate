@@ -4,6 +4,7 @@
   // Valid user database and current user import
   import {validCredentials, currentUser} from '/js/store.js';
   import '../css/homepage.css';
+  import { currentLanguage } from '/js/store.js';
   import {
     f7,
     Page,
@@ -21,7 +22,6 @@
     Popover,
     ListItem,
   } from 'framework7-svelte';
-  import { text } from 'dom7';
   
   // Responsive language settings for motivational text
   const texts = {
@@ -100,48 +100,48 @@
   };
 
   // Default language
-  let currentLanguage = "it";
+  //let currentLanguage = "it"; //removed in 0.3 for dynamic store save
 
   function changeLanguage(lang) {
-    if (lang === "it") currentLanguage = "it";
-    if (lang === "en") currentLanguage = "en";
-    if (lang === "es") currentLanguage = "es";
-    if (lang === "ro") currentLanguage = "ro";
+    if (lang === "it") $currentLanguage='it';
+    if (lang === "en") $currentLanguage='en';
+    if (lang === "es") $currentLanguage='es';
+    if (lang === "ro") $currentLanguage='ro';
 
-    plan = texts[currentLanguage].plan;
-    act = texts[currentLanguage].act;
-    achieve = texts[currentLanguage].achieve;
-    language= texts[currentLanguage].language;
-    login= texts[currentLanguage].login;
-    user= texts[currentLanguage].user;
-    pass= texts[currentLanguage].pass;
-    userPlaceholder= texts[currentLanguage].userPlaceholder;
-    passPlaceholder= texts[currentLanguage].passPlaceholder;
-    help= texts[currentLanguage].help;
-    helpText= texts[currentLanguage].helpText;
-    issueUsername= texts[currentLanguage].issueUsername;
-    issuePassword= texts[currentLanguage].issuePassword;
-    invalidLogin= texts[currentLanguage].invalidLogin;
-    correctLogin= texts[currentLanguage].correctLogin;
-    contacts= texts[currentLanguage].contacts;
+    plan = texts[$currentLanguage].plan;
+    act = texts[$currentLanguage].act;
+    achieve = texts[$currentLanguage].achieve;
+    language= texts[$currentLanguage].language;
+    login= texts[$currentLanguage].login;
+    user= texts[$currentLanguage].user;
+    pass= texts[$currentLanguage].pass;
+    userPlaceholder= texts[$currentLanguage].userPlaceholder;
+    passPlaceholder= texts[$currentLanguage].passPlaceholder;
+    help= texts[$currentLanguage].help;
+    helpText= texts[$currentLanguage].helpText;
+    issueUsername= texts[$currentLanguage].issueUsername;
+    issuePassword= texts[$currentLanguage].issuePassword;
+    invalidLogin= texts[$currentLanguage].invalidLogin;
+    correctLogin= texts[$currentLanguage].correctLogin;
+    contacts= texts[$currentLanguage].contacts;
   }
 
-  let plan = texts[currentLanguage].plan;
-  let act = texts[currentLanguage].act;
-  let achieve = texts[currentLanguage].achieve;
-  let language = texts[currentLanguage].language;
-  let login = texts[currentLanguage].login;
-  let user = texts[currentLanguage].user;
-  let pass = texts[currentLanguage].pass;
-  let userPlaceholder = texts[currentLanguage].userPlaceholder;
-  let passPlaceholder = texts[currentLanguage].passPlaceholder;
-  let help = texts[currentLanguage].help;
-  let helpText= texts[currentLanguage].helpText;
-  let issueUsername= texts[currentLanguage].issueUsername;
-  let issuePassword= texts[currentLanguage].issuePassword;
-  let invalidLogin= texts[currentLanguage].invalidLogin;
-  let correctLogin= texts[currentLanguage].correctLogin;
-  let contacts= texts[currentLanguage].contacts;
+  let plan = texts[$currentLanguage].plan;
+  let act = texts[$currentLanguage].act;
+  let achieve = texts[$currentLanguage].achieve;
+  let language = texts[$currentLanguage].language;
+  let login = texts[$currentLanguage].login;
+  let user = texts[$currentLanguage].user;
+  let pass = texts[$currentLanguage].pass;
+  let userPlaceholder = texts[$currentLanguage].userPlaceholder;
+  let passPlaceholder = texts[$currentLanguage].passPlaceholder;
+  let help = texts[$currentLanguage].help;
+  let helpText= texts[$currentLanguage].helpText;
+  let issueUsername= texts[$currentLanguage].issueUsername;
+  let issuePassword= texts[$currentLanguage].issuePassword;
+  let invalidLogin= texts[$currentLanguage].invalidLogin;
+  let correctLogin= texts[$currentLanguage].correctLogin;
+  let contacts= texts[$currentLanguage].contacts;
 
   $: login_first = login.charAt(0);
   $: login_cont = login.slice(1);

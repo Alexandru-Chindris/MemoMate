@@ -1,39 +1,38 @@
 <Page>
-    <Navbar title="Aggiunta impegno" />
+    <Navbar title="{addingTask}" />
     <List strongIos outlineIos dividersIos form formStoreData id="demo-form">
         <ListInput
-        label="Titolo"
+        label="{taskTitle}"
         name="name"
         type="text"
         clearButton
-        placeholder="Inserisci il titolo del tuo impegno"
+        placeholder="{taskTitlePlaceholder}"
         bind:value={formData.name}
       />
       <ListInput
-        label="Descrizione"
+        label="{taskDescription}"
         type="textarea"
         resizable
-        placeholder="Descrivimi l'attività che dovrò ricordarti!"
+        placeholder="{taskDescriptionPlaceholder}"
         bind:value={formData.description}
       />
       <ListInput
-        label="Notifica"
+        label="{taskDate}"
         name="date"
         type="datetime-local"
-        placeholder="Quando devo ricordartelo?"
+        placeholder="{taskDatePlaceholder}"
         bind:value={formData.date}
       />
     </List>
       <Block>
-        <Button fill round onClick={saveData}>Aggiungi</Button>
+        <Button fill round onClick={saveData}>{taskBtn}</Button>
       </Block>
 </Page>
 
 <script>
   import { f7, Navbar, Page, List, ListInput, Button, Block, Link} from 'framework7-svelte';
   import { addTaskForCurrentUser } from '/js/store.js'; // Import della funzione per aggiungere un impegno
-
-    //Reactive translation
+  import { currentLanguage } from '/js/store.js'; // v0.3 Reactive language
     const texts={
       it:{
         addingTask: "Aggiunta impegno",
@@ -93,7 +92,18 @@
       }
     }
 
-
+    let addingTask = texts[$currentLanguage].addingTask;
+    let taskTitle = texts[$currentLanguage].taskTitle;
+    let taskTitlePlaceholder = texts[$currentLanguage].taskTitlePlaceholder;
+    let taskDescription = texts[$currentLanguage].taskDescription;
+    let taskDescriptionPlaceholder = texts[$currentLanguage].taskDescriptionPlaceholder;
+    let taskDate = texts[$currentLanguage].taskDate;
+    let taskDatePlaceholder = texts[$currentLanguage].taskDatePlaceholder;
+    let taskBtn = texts[$currentLanguage].taskBtn;
+    let taskError = texts[$currentLanguage].taskError;
+    let taskNotificationTime = texts[$currentLanguage].taskNotificationTime;
+    let taskNotificationSubtitle = texts[$currentLanguage].taskNotificationSubtitle;
+    let taskNotificationText = texts[$currentLanguage].taskNotificationText;
 
     // Reactive form data object
     let formData = {
@@ -112,10 +122,10 @@
       if (!notificationCloseOnClick) {
         notificationCloseOnClick = f7.notification.create({
           icon: '<i class="icon icon-f7"></i>',
-          title: 'Errore',
-          titleRightText: 'ora',
-          subtitle: 'Il tuo impegno deve avere un nome ed una descrizione!',
-          text: 'Clicca per chiudere',
+          title: `${taskError}`,
+          titleRightText: `${taskNotificationTime}`,
+          subtitle: `${taskNotificationSubtitle}`,
+          text: `${taskNotificationText}`,
           closeOnClick: true,
         });
       }

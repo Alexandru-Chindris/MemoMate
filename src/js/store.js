@@ -66,5 +66,8 @@ export function getTasksForCurrentUser() {
   return userTasksForCurrentUser;
 }
 
+// v0.3 - Reactive export for the variable 
+export let currentLanguage = writable('en');
+
 // Default store export.
 export default store;
