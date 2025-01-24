@@ -10,17 +10,28 @@ import NotFoundPage from '../pages/404.svelte';
 
 var routes = [
   {
+    name: 'login',
     path: '/',
     component: Login, //default Login
+    options: {
+      transition: 'f7-push', // 0.4 transition update
+    }
   },
   {
     name: 'homepage',
     path: '/homepage/',
     component: Homepage,
+    options: {
+      transition: 'f7-push', // 0.4 transition update
+    }
+    
   },
   {
     path: '/form/',
     component: Form,
+    options: {
+      transition: 'f7-push', // 0.4 transition update
+    }
   },
   {
     path: '/dynamic-route/blog/:blogId/post/:postId/',
