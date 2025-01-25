@@ -2,6 +2,7 @@
 import Homepage from '../pages/homepage.svelte';
 import Form from '../pages/form.svelte';
 import Login from '../pages/login.svelte';
+import ludoHomepage from '../pages/ludoHomepage.svelte';
 
 
 import DynamicRoutePage from '../pages/dynamic-route.svelte';
@@ -21,6 +22,15 @@ var routes = [
     name: 'homepage',
     path: '/homepage/',
     component: Homepage,
+    options: {
+      transition: 'f7-push', // 0.4 transition update
+    }
+    
+  },
+  {
+    name: 'ludoHomepage', // 0.5 custom user page
+    path: '/ludohomepage/',
+    component: ludoHomepage,
     options: {
       transition: 'f7-push', // 0.4 transition update
     }

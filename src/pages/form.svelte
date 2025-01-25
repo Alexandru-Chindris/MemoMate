@@ -31,7 +31,7 @@
 
 <script>
   import { f7, Navbar, Page, List, ListInput, Button, Block, Link} from 'framework7-svelte';
-  import { addTaskForCurrentUser } from '/js/store.js'; // Import della funzione per aggiungere un impegno
+  import { addTaskForCurrentUser } from '/js/store.js';
   import { currentLanguage } from '/js/store.js'; // v0.3 Reactive language
     const texts={
       it:{
@@ -121,7 +121,6 @@
       // Create notification
       if (!notificationCloseOnClick) {
         notificationCloseOnClick = f7.notification.create({
-          icon: '<i class="icon icon-f7"></i>',
           title: `${taskError}`,
           titleRightText: `${taskNotificationTime}`,
           subtitle: `${taskNotificationSubtitle}`,
@@ -132,7 +131,7 @@
       notificationCloseOnClick.open();
     }
 
-    // Funzione per salvare i dati nello store
+    // Save to store
     function saveData() {
         if(formData.name == '' && formData.description == ''){
           // Error notification
@@ -141,7 +140,7 @@
         }else{
           // Saving current data form to user
           addTaskForCurrentUser({ ...formData });
-
+          
           // Moving user in case of succesful add
           f7.views.main.router.navigate('/homepage/');
         }

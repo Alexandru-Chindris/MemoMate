@@ -27,25 +27,24 @@ export const validCredentials = [
     username: 'Ludovica',
     password: 'amore'
   }
-  // Including Express in future release
+  // Not planning to include database in future realese, this project is not aiming to backend managment.
 ];
 
 // Current user logged in.
 export const currentUser = writable(null);
 
-// Store per gli impegni, separati per utente
-export const userTasks = writable({}); // Oggetto che associa username -> lista di impegni
+// Saving data based on every user
+export const userTasks = writable({});
 
-// Funzione per aggiungere un impegno per l'utente corrente
 export function addTaskForCurrentUser(task) {
   currentUser.subscribe(username => {
     if (username) {
       userTasks.update(tasks => {
-        // Se non ci sono impegni per l'utente, inizializziamo un array vuoto
+        // Empty array for non user task
         if (!tasks[username]) {
           tasks[username] = [];
         }
-        // Aggiungiamo il nuovo impegno
+        // new user task
         tasks[username].push(task);
         return tasks;
       });
@@ -53,7 +52,20 @@ export function addTaskForCurrentUser(task) {
   })();
 }
 
-// Funzione per ottenere gli impegni dell'utente corrente
+export function removeTaskForCurrentUser(taskName) {
+  currentUser.subscribe(username => {
+    if (username) {
+      userTasks.update(tasks => {
+        if (tasks[username]) {
+          tasks[username] = tasks[username].filter(task => task.name !== taskName);
+        }
+        return tasks;
+      });
+    }
+  })();
+}
+
+// Function to get user task
 export function getTasksForCurrentUser() {
   let userTasksForCurrentUser = [];
   currentUser.subscribe(username => {

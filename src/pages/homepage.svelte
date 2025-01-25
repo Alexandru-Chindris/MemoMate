@@ -1,51 +1,49 @@
 <Page>
-  <Navbar title="{username} {titlePlaceholder}" sliding>
-    
+  <Navbar title="{titlePlaceholder} {username}" sliding>
     <Button small slot="nav-left" popoverOpen=".popover-menu"><Icon f7="menu"/></Button>
   </Navbar>
   <Popover class="popover-menu" closeByOutsideClick closeOnEscape arrow>
     <List>
       <ListItem popoverClose on:click={homepageLink}  title="{logout}" />
-<!--  <ListItem link="/tabs/" popoverClose  title="Tabs" />
-      <ListItem link="/panel/" popoverClose title="Side Panels" />
-      <ListItem link="/list/" popoverClose title="List View" />
-      <ListItem link="/inputs/" popoverClose title="Form Inputs" /> -->
     </List>
   </Popover>
   <Fab position="center-bottom" text="{add}" on:click={formLink}>
     <Icon f7="bag_badge_plus"/>
   </Fab>
-  {commitments}
+  <div class="taskTitle">
+    {commitments}
+  </div>
   <!-- Task init -->
       {#each taskList as task (task.name)}
             <div class="block-title block-title-medium">
               {taskName} {task.name}
             </div>
             <div class="block block-strong">
-              <p>{taskDescription} {task.description || "No description"}</p>
-              <p><Icon f7="alarm_fill" size="20px"/>{taskNotification | "No notification"}</p>
+              <p class="taskDescription">{taskDescription} {task.description || "No description"}</p>
+              <p><Icon f7="alarm_fill" size="20px"/>  {task.date}</p>
               <div class="grid grid-cols-4 grid-gap">
-                <p><Icon f7="trash" size="30px" on:click={()=>removeTask()}/></p>
-                <p><Icon f7="gear" size="30px" on:click={()=>removeTask()}/></p>
-                <p><Icon f7="tray_arrow_down" size="30px" on:click={() => removeTask()}/></p>
-                <p><Icon f7="tbell_slash" size="30px" on:click={() => removeTask()}/></p>
+                <Button on:click={()=>removeTask(task.name)}><Icon f7="trash" size="30px"/></Button>
+                <Button on:click={()=> noAction()}><Icon f7="gear" size="30px"/></Button>
+                <Button on:click={() => noAction()}><Icon f7="tray_arrow_down" size="30px"/></Button>
+                <Button on:click={() => noAction()}><Icon f7="tbell_slash" size="30px"/></Button>
               </div>
             </div>
-      {/each}
+      {/each} 
   <!-- Task template end -->
 </Page>
 <script>
   import '../css/login.css';
   // Value of currentUser
+  import {removeTaskForCurrentUser} from '/js/store.js'; 
   import {currentUser, userTasks } from '/js/store.js'; // Import degli store
   import {currentLanguage} from '/js/store.js'; // v0.3 Reactive language
-  import {f7,Popover,Button, Navbar, Page, Fab, FabButton, FabButtons, Icon, BlockTitle, Link, AccordionContent, Block, ListItem, List, SwipeoutActions, SwipeoutButton} from 'framework7-svelte';
-  
+  import {f7,Popover,Button, Navbar, Page, Fab, Icon, ListItem, List } from 'framework7-svelte';
+
   const texts={
     it: {
       add: "Aggiungi",
       logout: "Esci",
-      titlePlaceholder: "ecco i tuoi Impegni",
+      titlePlaceholder: "Bentornato, ",
       commitments: "Impegni",
       taskName: "Nome:",
       taskDescription: "Descrizione:",
@@ -54,7 +52,7 @@
     es: {
       add: "Agregar",
       logout: "Salida",
-      titlePlaceholder: "Estos son sus compromisos",
+      titlePlaceholder: "Bienvenido, ",
       commitments: "Compromisos",
       taskName: "Nombre:",
       taskDescription: "Descripción:",
@@ -63,7 +61,7 @@
     en:{
       add: "Add",
       logout: "Logout",
-      titlePlaceholder: "here are your commitments",
+      titlePlaceholder: "Welcome back, ",
       commitments: "Commitments",
       taskName: "Name:",
       taskDescription: "Description:",
@@ -72,7 +70,7 @@
     ro:{
       add: "Adăuga",
       logout: "Deconectare",
-      titlePlaceholder: "Iată angajamentele tale",
+      titlePlaceholder: "Bine ai revenit, ",
       commitments: "Angajamentele",
       taskName: "Nume:",
       taskDescription: "Descriere:",
@@ -95,6 +93,23 @@
     username = value;
   });
 
+let notificationFull;
+
+function showNotificationFull() {
+  // Create notification
+  if (!notificationFull) {
+      notificationFull = f7.notification.create({
+      title: 'MemoMate',
+      titleRightText: 'now',
+      subtitle: 'No action',
+      text: 'This action is not working in this version.',        
+      closeTimeout: 3000,
+    });
+  }
+  // Open it
+  notificationFull.open();
+}
+  
 function homepageLink(){
   f7.views.main.router.navigate('/');
 }
@@ -103,9 +118,17 @@ function formLink(){
   f7.views.main.router.navigate('/form/');
 }
 
+
+
 // v0.4 Task removal
-function removeTask(){
+function removeTask(task){
   console.log("Task removed");
+  removeTaskForCurrentUser(task);
+}
+
+function noAction(){
+  showNotificationFull();
+
 }
 
   // Object destruction for 2nd iteration

@@ -178,9 +178,15 @@
 
       // Useful alert for authentication.
       f7.dialog.alert(correctLogin , () => {
-        f7.loginScreen.close();
-        f7.dialog.close();
-        f7router.navigate('/homepage/');
+        if(username == 'Ludovica' ){ // 0.5 custom route for special user
+          f7.loginScreen.close();
+          f7.dialog.close();
+          f7router.navigate('/ludohomepage/');
+        }else{
+          f7.loginScreen.close();
+          f7.dialog.close();
+          f7router.navigate('/homepage/');
+        }
       });
     } else {
       f7.dialog.alert(invalidLogin);
