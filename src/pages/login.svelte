@@ -69,7 +69,7 @@
       login: "Inicia sesión",
       user: "Usuario",
       pass: "Contraseña",
-      userPlaceholder: "Ingresa tu nombre de usuario",
+      userPlaceholder: "Ingresa tu nombre d e usuario",
       passPlaceholder: "Ingresa tu contraseña",
       help: "Necesitas una mano?",
       helpText: "¡Eh! Para comenzar a usar esta aplicación, necesitará credenciales válidas. No te preocupes, pregúntale al creador. Este proyecto se llevó a cabo con mucha pasión para poner en práctica nuevas habilidades y aprender cosas cada vez más interesantes. Esta aplicación está disponible tanto para Android como para iOS",
