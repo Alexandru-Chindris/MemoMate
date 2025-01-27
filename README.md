@@ -9,7 +9,7 @@ L'applicazione presente nel repository, chiamata MemoMate, è stata creata con l
 
 MemoMate è stata sviluppata utilizzando Svelte e Framework7:<br>
 
-- Svelte è un framework JavaScript moderno che consente di costruire interfacce utente in modo semplice ed efficiente. A differenza di altri framework, Svelte compila il codice durante la fase di build, eliminando la necessità di un runtime pesante e migliorando le prestazioni.<br>
+- Svelte è un framework JavaScript moderno che consente di costruire   interfacce utente in modo semplice ed efficiente. A differenza di altri framework, Svelte compila il codice durante la fase di build, eliminando la necessità di un runtime pesante e migliorando le prestazioni.<br>
 
 - Framework7 è un framework front-end progettato specificamente per creare applicazioni mobile con un aspetto nativo. Offre una vasta gamma di componenti predefiniti e strumenti per semplificare lo sviluppo di app per iOS e Android.
 Questo progetto rappresenta un'opportunità per approfondire l'uso di queste tecnologie e comprendere meglio il processo di sviluppo di applicazioni mobile.
