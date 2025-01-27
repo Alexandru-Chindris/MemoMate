@@ -23,7 +23,7 @@ npm start
 ```
 
 ## Quick Project Overview
-Website [here]()
+Website [here](https://alexandru-chindris.github.io/MemoMate/)
 
 ### Disclaimer 
 
@@ -52,7 +52,7 @@ npm start
 ```
 
 ## Quick Project Overview
-Website [here]()
+Website [here](https://alexandru-chindris.github.io/MemoMate/)
 
 ### Disclaimer
 **I never intend to infrange on the rights of others.There are third-party images sourced from Pexels (https://www.pexels.com/it-it/license/) If you find something that you believe is a violation of your rights before taking any legal action contact me, I will be happy to accommodate your request and remove the article in question. Some images could be taken from canva.com**
